@@ -34,4 +34,4 @@ Oyun Three.js r187 ve Vite ile oluşturulmuştur. Karakter, hamam mimarisi ve oy
 
 ## Yayın
 
-`.github/workflows/pages.yml` testleri çalıştırıp Vite çıktısını GitHub Pages'e dağıtır.
+`.github/workflows/pages.yml` testleri çalıştırıp Vite çıktısını GitHub Pages'e dağıtır. İlk dağıtımdan önce depo yöneticisinin **Settings → Pages → Build and deployment → Source: GitHub Actions** ayarını etkinleştirmesi gerekir. Ardından Actions sekmesinden **Deploy game to GitHub Pages → Run workflow** ile dağıtımı başlatın.
