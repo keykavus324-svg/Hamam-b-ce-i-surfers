@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#07191d" />
+    <meta name="description" content="Kırıntı Peşinde: Eski bir hamamda geçen, reflekslerini sınayan 3D sonsuz koşu macerası." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Kırıntı Peşinde — Hamam Kaçağı</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <main id="game-shell" aria-label="Kırıntı Peşinde oyun alanı">
+      <canvas id="game-canvas" aria-label="3 boyutlu oyun sahnesi"></canvas>
+      <div class="vignette" aria-hidden="true"></div>
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Kırıntı Peşinde ana ekran">
+          <span class="brand-bug">✳</span><span>KIRINTI<span class="brand-dot">.</span></span>
+        </a>
+        <div class="top-actions">
+          <div class="record-chip"><span class="record-icon">✦</span><span>REKOR</span><strong id="best-score">00000</strong></div>
+          <button class="icon-button" id="sound-toggle" aria-label="Sesi kapat" title="Sesi aç/kapat"><span id="sound-icon">◖))</span></button>
+          <button class="icon-button pause-button" id="pause-button" aria-label="Oyunu duraklat" title="Duraklat" hidden>Ⅱ</button>
+        </div>
+      </header>
+
+      <section class="hud" aria-live="polite" hidden>
+        <div class="hud-main"><span class="eyebrow">MESAFE</span><strong id="distance">000</strong><span class="unit">m</span></div>
+        <div class="hud-divider"></div>
+        <div class="hud-main crumbs"><span class="eyebrow">KIRINTI</span><strong id="crumb-count">0</strong><span class="crumb-glyph">✦</span></div>
+        <div class="speed-pill"><i></i><span id="speed-label">RAHAT</span></div>
+      </section>
+
+      <section class="overlay intro-overlay" id="intro-overlay">
+        <div class="intro-card">
+          <div class="chapter-tag"><span></span> HAMAMIN ARKA KAPISI · GECE 02:17</div>
+          <h1>YERDE<br />KIRINTI VAR<span class="title-period">.</span></h1>
+          <p class="intro-copy">Küçük olabilirsin. Ama bu hamamda<br class="desktop-break" /> en hızlı olan sensin.</p>
+          <div class="intro-rule"></div>
+          <div class="controls-preview">
+            <div><kbd>←</kbd><kbd>→</kbd><span>ŞERİT DEĞİŞTİR</span></div>
+            <div><kbd>↑</kbd><span>ZIPLA</span><kbd>↓</kbd><span>KAY</span></div>
+          </div>
+          <button class="primary-button" id="start-button"><span>KOŞUYA BAŞLA</span><b>↗</b></button>
+          <div class="mobile-hint">TELEFONDA: ŞERİT DEĞİŞTİRMEK İÇİN KAYDIR · ZIPLA / KAY İÇİN DOKUN</div>
+          <div class="personal-best">EN İYİ SKORUN <b id="intro-best">00000</b></div>
+        </div>
+        <div class="intro-note"><span class="note-line"></span><span>USTA HAMAM BÖCEĞİ<br />SEVİYE 01 — KIRINTI AVCISI</span></div>
+      </section>
+
+      <section class="overlay pause-overlay" id="pause-overlay" hidden>
+        <div class="modal-card compact-card"><span class="modal-kicker">BİR NEFES AL</span><h2>DURAKLATILDI<span>.</span></h2><p>Hamam biraz daha bekleyebilir.</p><button class="primary-button" id="resume-button"><span>DEVAM ET</span><b>↗</b></button></div>
+      </section>
+      <section class="overlay result-overlay" id="result-overlay" hidden>
+        <div class="modal-card compact-card"><span class="modal-kicker" id="result-kicker">KOŞU TAMAMLANDI</span><h2 id="result-title">YAKALANDIN<span>.</span></h2><p>Bir sonraki turda daha uzağa gidersin.</p><div class="result-stats"><div><small>MESAFE</small><strong id="final-distance">000</strong><em>m</em></div><div><small>KIRINTI</small><strong id="final-crumbs">0</strong><em>✦</em></div></div><button class="primary-button" id="retry-button"><span>YENİDEN DENE</span><b>↻</b></button><button class="text-button" id="home-button">ANA EKRANA DÖN</button></div>
+      </section>
+
+      <div class="toast" id="toast" aria-live="polite"></div>
+      <footer class="footer"><span>İNCE · HIZLI · ASLA DAVETLİ DEĞİL</span><span>HAMAM KAÇAĞI <i>✳</i> 2026</span></footer>
+      <div class="touch-controls" id="touch-controls" hidden><button data-action="left" aria-label="Sola kay">‹</button><button data-action="jump" aria-label="Zıpla">↑</button><button data-action="slide" aria-label="Kay">↓</button><button data-action="right" aria-label="Sağa kay">›</button></div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
