@@ -12,6 +12,7 @@ test('lane movement is bounded and moves one lane at a time', () => {
 
 test('score includes distance and crumb bonus', () => {
   assert.equal(scoreRun(123.9, 4), 223);
+  assert.equal(scoreRun(100, 2, 50), 200);
   assert.equal(scoreRun(0, 0), 0);
 });
 

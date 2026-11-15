@@ -2,64 +2,64 @@
 <html lang="tr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#07191d" />
-    <meta name="description" content="Kırıntı Peşinde: Eski bir hamamda geçen, reflekslerini sınayan 3D sonsuz koşu macerası." />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#1e3044" />
+    <meta name="description" content="Hamamböceği Run — Şehrin sokaklarında koş, engellerden sıyrıl, tohum topla ve Divadan kaç!" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Kırıntı Peşinde — Hamam Kaçağı</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
+    <title>Hamamböceği Run — Şehir Kaçışı</title>
   </head>
   <body>
-    <main id="game-shell" aria-label="Kırıntı Peşinde oyun alanı">
-      <canvas id="game-canvas" aria-label="3 boyutlu oyun sahnesi"></canvas>
-      <div class="vignette" aria-hidden="true"></div>
+    <main id="game-shell" aria-label="Hamamböceği Run oyun alanı">
+      <canvas id="game-canvas" aria-label="3 boyutlu şehirde sonsuz koşu oyunu"></canvas>
+      <div class="color-grade" aria-hidden="true"></div>
+
       <header class="topbar">
-        <a class="brand" href="#" aria-label="Kırıntı Peşinde ana ekran">
-          <span class="brand-bug">✳</span><span>KIRINTI<span class="brand-dot">.</span></span>
-        </a>
+        <a class="brand" href="#" aria-label="Hamamböceği Run ana ekran"><span class="brand-bug">🪳</span><span>HAMAMBÖCEĞİ <b>RUN</b></span></a>
         <div class="top-actions">
-          <div class="record-chip"><span class="record-icon">✦</span><span>REKOR</span><strong id="best-score">00000</strong></div>
-          <button class="icon-button" id="sound-toggle" aria-label="Sesi kapat" title="Sesi aç/kapat"><span id="sound-icon">◖))</span></button>
+          <div class="record-chip"><span>🏆</span><small>REKOR</small><strong id="best-score">00000</strong></div>
+          <button class="icon-button" id="sound-toggle" aria-label="Sesi kapat" title="Sesi aç/kapat">🔊</button>
           <button class="icon-button pause-button" id="pause-button" aria-label="Oyunu duraklat" title="Duraklat" hidden>Ⅱ</button>
         </div>
       </header>
 
       <section class="hud" aria-live="polite" hidden>
-        <div class="hud-main"><span class="eyebrow">MESAFE</span><strong id="distance">000</strong><span class="unit">m</span></div>
+        <div class="hud-stat"><small>SKOR</small><strong id="distance">00000</strong></div>
         <div class="hud-divider"></div>
-        <div class="hud-main crumbs"><span class="eyebrow">KIRINTI</span><strong id="crumb-count">0</strong><span class="crumb-glyph">✦</span></div>
-        <div class="speed-pill"><i></i><span id="speed-label">RAHAT</span></div>
+        <div class="hud-stat seed-stat"><small>TOHUM</small><strong id="crumb-count">0</strong><span>🌻</span></div>
+        <div class="hud-power" id="power-indicator" hidden><span id="power-icon">⚡</span><b id="power-label">MIKNATIS</b><i id="power-timer"></i></div>
       </section>
 
       <section class="overlay intro-overlay" id="intro-overlay">
         <div class="intro-card">
-          <div class="chapter-tag"><span></span> HAMAMIN ARKA KAPISI · GECE 02:17</div>
-          <h1>YERDE<br />KIRINTI VAR<span class="title-period">.</span></h1>
-          <p class="intro-copy">Küçük olabilirsin. Ama bu hamamda<br class="desktop-break" /> en hızlı olan sensin.</p>
-          <div class="intro-rule"></div>
-          <div class="controls-preview">
-            <div><kbd>←</kbd><kbd>→</kbd><span>ŞERİT DEĞİŞTİR</span></div>
-            <div><kbd>↑</kbd><span>ZIPLA</span><kbd>↓</kbd><span>KAY</span></div>
-          </div>
-          <button class="primary-button" id="start-button"><span>KOŞUYA BAŞLA</span><b>↗</b></button>
-          <div class="mobile-hint">TELEFONDA: ŞERİT DEĞİŞTİRMEK İÇİN KAYDIR · ZIPLA / KAY İÇİN DOKUN</div>
-          <div class="personal-best">EN İYİ SKORUN <b id="intro-best">00000</b></div>
+          <div class="chapter-tag"><span></span> DIVA PEŞİNDE · ŞEHİR TURU 01</div>
+          <h1>HAMAMBÖCEĞİ<br /><em>RUN!</em></h1>
+          <p class="intro-copy">Şehrin en hızlı böceği sensin.<br />Diva arkanda — <b>koş, kaç, tohumları kap!</b></p>
+          <div class="intro-chips"><span>🏙️ ŞEHİRDE KOŞ</span><span>🌻 TOHUM TOPLA</span><span>⚡ GÜÇLEN</span></div>
+          <div class="skin-chooser"><button id="skin-prev" aria-label="Önceki hamamböceği">‹</button><div class="skin-info"><small>KOŞUCUNU SEÇ</small><strong id="skin-name">KIRMIZI TİŞÖRTLÜ</strong></div><button id="skin-next" aria-label="Sonraki hamamböceği">›</button><button id="skin-buy">KULLAN</button><span class="seed-bank">🌻 <b id="total-seeds">0</b></span></div>
+          <button class="primary-button" id="start-button"><span>KOŞUYA BAŞLA</span><b>▶</b></button>
+          <div class="controls-preview"><span>← → ŞERİT</span><span>↑ ZIPLA</span><span>↓ KAY</span></div>
+          <div class="mobile-hint">TELEFONDA: KAYDIRARAK YÖN DEĞİŞTİR · YUKARI ZIPLA · AŞAĞI KAY</div>
+          <div class="personal-best"><span>EN İYİ SKOR</span><b id="intro-best">00000</b></div>
         </div>
-        <div class="intro-note"><span class="note-line"></span><span>USTA HAMAM BÖCEĞİ<br />SEVİYE 01 — KIRINTI AVCISI</span></div>
+        <div class="intro-note"><span>HIZLI OL.<br />DIVA YAKALIYOR!</span> <b>↗</b></div>
+        <div class="tap-to-play">BAŞLAMAK İÇİN DOKUN</div>
       </section>
 
       <section class="overlay pause-overlay" id="pause-overlay" hidden>
-        <div class="modal-card compact-card"><span class="modal-kicker">BİR NEFES AL</span><h2>DURAKLATILDI<span>.</span></h2><p>Hamam biraz daha bekleyebilir.</p><button class="primary-button" id="resume-button"><span>DEVAM ET</span><b>↗</b></button></div>
+        <div class="modal-card compact-card"><span class="modal-kicker">DIVA DA NEFESLENİYOR...</span><h2>DURAKLATILDI<span>!</span></h2><p>Kaçışa hazır olduğunda devam et.</p><button class="primary-button" id="resume-button"><span>DEVAM ET</span><b>▶</b></button></div>
       </section>
       <section class="overlay result-overlay" id="result-overlay" hidden>
-        <div class="modal-card compact-card"><span class="modal-kicker" id="result-kicker">KOŞU TAMAMLANDI</span><h2 id="result-title">YAKALANDIN<span>.</span></h2><p>Bir sonraki turda daha uzağa gidersin.</p><div class="result-stats"><div><small>MESAFE</small><strong id="final-distance">000</strong><em>m</em></div><div><small>KIRINTI</small><strong id="final-crumbs">0</strong><em>✦</em></div></div><button class="primary-button" id="retry-button"><span>YENİDEN DENE</span><b>↻</b></button><button class="text-button" id="home-button">ANA EKRANA DÖN</button></div>
+        <div class="modal-card compact-card"><span class="modal-kicker" id="result-kicker">DIVA YAKALADI!</span><h2 id="result-title">BİR SONRAKİ TURDA<span>!</span></h2><p>Şehrin sokakları seni bekliyor. Bir daha dene!</p><div class="result-stats"><div><small>SKOR</small><strong id="final-distance">00000</strong></div><div><small>TOHUM</small><strong id="final-crumbs">0</strong><em>🌻</em></div></div><button class="primary-button" id="retry-button"><span>TEKRAR KOŞ</span><b>↻</b></button><button class="text-button" id="home-button">ANA EKRANA DÖN</button></div>
       </section>
 
       <div class="toast" id="toast" aria-live="polite"></div>
-      <footer class="footer"><span>İNCE · HIZLI · ASLA DAVETLİ DEĞİL</span><span>HAMAM KAÇAĞI <i>✳</i> 2026</span></footer>
-      <div class="touch-controls" id="touch-controls" hidden><button data-action="left" aria-label="Sola kay">‹</button><button data-action="jump" aria-label="Zıpla">↑</button><button data-action="slide" aria-label="Kay">↓</button><button data-action="right" aria-label="Sağa kay">›</button></div>
+      <footer class="footer"><span>ŞEHRİN SOKAKLARI SENİ BEKLİYOR!</span><span>HAMAMBÖCEĞİ RUN <i>🪳</i></span></footer>
+      <div class="touch-controls" id="touch-controls" hidden>
+        <button data-action="left" aria-label="Sola git">◀</button><button data-action="jump" aria-label="Zıpla">⬆</button><button data-action="slide" aria-label="Kay">⬇</button><button data-action="right" aria-label="Sağa git">▶</button>
+      </div>
     </main>
     <script type="module" src="/src/main.js"></script>
   </body>

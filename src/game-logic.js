@@ -5,8 +5,8 @@ export function moveLane(currentLane, direction) {
   return clamp(currentLane + Math.sign(direction), 0, LANES.length - 1);
 }
 
-export function scoreRun(distance, crumbs) {
-  return Math.floor(distance) + crumbs * 25;
+export function scoreRun(distance, crumbs, bonus = 0) {
+  return Math.floor(distance) + crumbs * 25 + bonus;
 }
 
 export function canAvoid(obstacleType, jumpTime, slideTime) {
